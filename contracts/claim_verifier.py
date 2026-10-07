@@ -1,6 +1,5 @@
 from genlayer import *
 
-
 class Contract(gl.Contract):
     verified_claims: dict
 
@@ -41,7 +40,7 @@ class Contract(gl.Contract):
 
             # For longer claims, require substantial word overlap.
             words = [
-                word.strip(".,!?;:\"'()[]{}")
+                word.strip(".,!?;:'\"()[]{}")
                 for word in normalized_claim.split()
             ]
 
@@ -54,7 +53,8 @@ class Contract(gl.Contract):
                 return False
 
             matches = sum(
-                1 for word in words
+                1
+                for word in words
                 if word in normalized_page
             )
 
@@ -81,3 +81,4 @@ class Contract(gl.Contract):
                 "error": "Claim has not been verified"
             }
         )
+        
